@@ -1,0 +1,43 @@
+@import './animation.scss';
+
+html {
+  background-color: #eee;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: #eee;
+  min-width: 900px;
+}
+
+.el-dialog {
+  border-radius: 8px;
+
+  .el-dialog__header {
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #e9eaec;
+  }
+
+  .el-dialog__body {
+    padding: 20px;
+  }
+
+}
+
+
+.el-form--inline{
+  .el-form-item {
+    margin-bottom: unset;
+    margin-right: 16px;
+  }
+}
+
+
+.markdown-body {
+  @import './markdown.scss';
+}

@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "home": "首页",
+    "problem": "问题",
+    "contest": "竞赛",
+    "status": "状态",
+    "rank": {
+      "rank": "排名",
+      "oi": "OI 排名",
+      "acm": "ACM 排名"
+    },
+    "about": {
+      "about": "关于",
+      "judger": "评测机",
+      "faq": "常见问题"
+    },
+    "user": {
+      "login": "登录",
+      "register": "注册",
+      "user": {
+        "home": "首页",
+        "submissions": "提交",
+        "settings": "设置",
+        "logout": "登出"
+      }
+    }
+  },
+  "problem": {
+    "list": {
+      "problems": "问题列表",
+      "tags": "标签",
+      "difficult": {},
+      "table": {
+        "index": "序号",
+        "title": "题目",
+        "level": "难度",
+        "total": "提交数",
+        "rate": "通过率",
+        "tag": "标签"
+      }
+    },
+    "detail": {
+      "description": "题目描述",
+      "input": "输入格式",
+      "output": "输出格式",
+      "sample": {
+        "input": "输入样例",
+        "output": "输出样例"
+      },
+      "hint": "提示信息",
+      "source": "题目来源",
+      "submit": {
+        "language": "编程语言",
+        "theme": "主题"
+      }
+    }
+  }
+}

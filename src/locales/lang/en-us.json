@@ -1,0 +1,18 @@
+{
+  "navigation": {
+    "home": "Home",
+    "problem": "Problem",
+    "contest": "Conetest",
+    "status": "Status",
+    "rank": {
+      "rank": "Rank",
+      "oi": "OI Rank",
+      "acm": "ACM Rank"
+    },
+    "about": {
+      "about": "About",
+      "judger": "Judger",
+      "faq": "FAQ"
+    }
+  }
+}
