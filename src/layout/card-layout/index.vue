@@ -26,10 +26,14 @@ export default {
 
 <style lang="scss" scoped>
 .card-layout {
+  /deep/ .el-card__header {
+    padding: 0.5rem 1rem;
+  }
   .box {
     .title {
       float: left;
       text-align: left;
+      line-height: 28px;
     }
 
     .toobar {

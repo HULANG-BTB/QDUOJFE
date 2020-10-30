@@ -2,16 +2,16 @@
   <div class="editor">
     <div class="toolbar">
       <div class="left">
-        {{ $t('problem.detail.submit.language') }} :
-        <el-select value="language" style="margin-left: 10px" @change="onLanguageChange">
+        {{ $t('problem.submit.language') }} :
+        <el-select :value="language" style="margin-left: 10px" @change="onLanguageChange">
           <el-option v-for="(language, index) in languages" :key="index" :label="language" :value="language"></el-option>
         </el-select>
         <el-button icon="el-icon-refresh" style="margin-left: 10px"></el-button>
       </div>
       <div class="right">
-        {{ $t('problem.detail.submit.theme') }} :
-        <el-select value="language" style="margin-left: 10px" @change="onThemeChange">
-          <el-option v-for="(language, index) in languages" :key="index" :label="language" :value="language"></el-option>
+        {{ $t('problem.submit.theme') }} :
+        <el-select :value="theme" style="margin-left: 10px" @change="onThemeChange">
+          <el-option v-for="(theme, index) in themes" :key="index" :label="theme.label" :value="theme.value"></el-option>
         </el-select>
       </div>
       <div style="clear: both;"></div>
@@ -67,9 +67,9 @@ export default {
         'C++': 'text/x-csrc'
       },
       themes: [
-        { label: this.$i18n.t('m.Monokai'), value: 'monokai' },
-        { label: this.$i18n.t('m.Solarized_Light'), value: 'solarized' },
-        { label: this.$i18n.t('m.Material'), value: 'material' }
+        { label: 'monokai', value: 'monokai' },
+        { label: 'solarized', value: 'solarized' },
+        { label: 'material', value: 'material' }
       ]
     }
   },
@@ -86,14 +86,16 @@ export default {
     },
     language: {
       type: String,
-      default: () => {
-        return 'C++'
-      }
+      default: () => 'C++'
+    },
+    theme: {
+      type: String,
+      default: () => 'solarized'
     }
   },
   methods: {
     onEditorCodeChange(newCode) {
-      this.$emit('update:value', newCode)
+      this.$emit('input', newCode)
     },
     onLanguageChange(language) {
       this.editor.setOption('mode', this.mode[language])
@@ -102,6 +104,12 @@ export default {
     onThemeChange(newTheme) {
       this.editor.setOption('theme', newTheme)
       this.$emit('theme-change', newTheme)
+    }
+  },
+  computed: {
+    editor() {
+      // get current editor object
+      return this.$refs.myEditor.editor
     }
   }
 }

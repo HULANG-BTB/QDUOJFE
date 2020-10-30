@@ -1,7 +1,7 @@
 <template>
   <div class="problem-list">
     <el-row :gutter="18">
-      <el-col :span="20">
+      <el-col :span="21">
         <el-row>
           <problem-details :problem="problem"></problem-details>
         </el-row>
@@ -9,23 +9,36 @@
           <problem-submit :problem="problem"></problem-submit>
         </el-row>
       </el-col>
-      <el-col :span="4">
-        <!-- <tag-list></tag-list> -->
+      <el-col :span="3">
+        <el-row>
+          <problem-submissions :problem="problem"></problem-submissions>
+        </el-row>
+        <el-row style="margin-top: 20px">
+          <problem-info :problem="problem"></problem-info>
+        </el-row>
+        <el-row style="margin-top: 20px">
+          <problem-statistic :problem="problem"></problem-statistic>
+        </el-row>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import ProblemDetails from './components/problem-details.vue'
-import problemSubmit from './components/problem-submit.vue'
-// import TagList from './components/tag-list'
+import ProblemDetails from './components/problem-details'
+import problemSubmit from './components/problem-submit'
+import ProblemSubmissions from './components/problem-submissions'
+import problemInfo from './components/problem-info'
+import problemStatistic from './components/problem-statistic'
 
 export default {
   name: 'Layout',
   components: {
     ProblemDetails,
-    problemSubmit
+    problemSubmit,
+    ProblemSubmissions,
+    problemInfo,
+    problemStatistic
   },
   data() {
     return {

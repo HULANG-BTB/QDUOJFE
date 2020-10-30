@@ -48,11 +48,27 @@
         "output": "输出样例"
       },
       "hint": "提示信息",
-      "source": "题目来源",
-      "submit": {
-        "language": "编程语言",
-        "theme": "主题"
-      }
+      "source": "题目来源"
+    },
+    "submit": {
+      "language": "编程语言",
+      "theme": "主题",
+      "submit": "提交"
+    },
+    "info": {
+      "title": "提交信息",
+      "id": "题目号码",
+      "time": "时间限制",
+      "memory": "内存限制",
+      "mode": "OI模式",
+      "create": "创建人",
+      "level": "难度",
+      "source": "来源",
+      "tag": "标签"
+    },
+    "statistic": {
+      "title": "统计信息",
+      "detail": "详细"
     }
   }
 }
