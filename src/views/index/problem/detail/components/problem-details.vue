@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  name: 'ProblemList',
+  name: 'ProblemDetail',
   data() {
     return {
       currentActive: ['description', 'input', 'output', 'sample', 'hint', 'source']
@@ -113,11 +113,9 @@ export default {
       margin: 15px auto;
       padding: 20px 15px;
       border: 1px solid #ddd;
-      // background: #fbfbfb url(img/prebg.png) repeat;
       white-space: pre-wrap;
       word-wrap: break-word;
       letter-spacing: 1.5px;
-      // font: 13px/25px 'Comic Sans MS', 'courier new';
       line-height: 1rem;
       background-size: 100% 44px;
     }

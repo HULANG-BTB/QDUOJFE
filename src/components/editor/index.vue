@@ -6,7 +6,9 @@
         <el-select :value="language" style="margin-left: 10px" @change="onLanguageChange">
           <el-option v-for="(language, index) in languages" :key="index" :label="language" :value="language"></el-option>
         </el-select>
-        <el-button icon="el-icon-refresh" style="margin-left: 10px"></el-button>
+        <el-popconfirm placement="right" :title="$t('problem.submit.reset')" @onConfirm="onResetCode">
+          <el-button slot="reference" icon="el-icon-refresh" style="margin-left: 10px"></el-button>
+        </el-popconfirm>
       </div>
       <div class="right">
         {{ $t('problem.submit.theme') }} :
@@ -104,11 +106,14 @@ export default {
     onThemeChange(newTheme) {
       this.editor.setOption('theme', newTheme)
       this.$emit('theme-change', newTheme)
+    },
+    onResetCode() {
+      this.$emit('input', '')
+      this.$emit('reset-code')
     }
   },
   computed: {
     editor() {
-      // get current editor object
       return this.$refs.myEditor.editor
     }
   }

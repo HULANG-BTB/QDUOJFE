@@ -12,9 +12,19 @@ modulesFiles.keys().forEach((key) => {
   }
 })
 
+asyncRoutes = asyncRoutes.sort((x, y) => {
+  if (x.sort < y.sort) {
+    return -1
+  } else if (x.sort === y.sort) {
+    return 0
+  } else {
+    return 1
+  }
+})
+
 /**
  * 最后加入 404 以免前期匹配到404 不再继续
  */
-asyncRoutes = asyncRoutes.concat([{ path: '*', redirect: '/404' }])
+asyncRoutes = asyncRoutes.concat([{ path: '*', redirect: '/404', hidden: true }])
 
 export default asyncRoutes

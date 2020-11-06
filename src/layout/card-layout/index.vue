@@ -1,7 +1,7 @@
 <template>
   <el-card class="card-layout">
     <template #header v-if="$slots.title || $slots.toobar">
-      <div class="box">
+      <div class="card-layout-header">
         <div class="title">
           <slot name="title"></slot>
         </div>
@@ -11,7 +11,9 @@
         <div style="clear: both"></div>
       </div>
     </template>
-    <slot></slot>
+    <div class="card-layout-body">
+      <slot></slot>
+    </div>
     <div v-if="$slots.pagination" class="pagination">
       <slot name="pagination"></slot>
     </div>
@@ -29,7 +31,7 @@ export default {
   /deep/ .el-card__header {
     padding: 0.5rem 1rem;
   }
-  .box {
+  .card-layout-header {
     .title {
       float: left;
       text-align: left;
@@ -37,8 +39,13 @@ export default {
     }
 
     .toobar {
+      line-height: 28px;
       float: right;
     }
+  }
+
+  .card-layout-body {
+    text-align: left;
   }
 
   .pagination {

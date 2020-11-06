@@ -3,8 +3,8 @@
     <template #title>
       {{ $t('problem.list.tags') }}
     </template>
-    <div class="content">
-      <el-button class="tag-btn" v-for="item in tagList" :key="item.id" round>{{ item.name }}</el-button>
+    <div class="content" v-loading="loading">
+      <el-button class="tag-btn" v-for="item in tagList" :key="item.id" round @click="handleTagClick(item.name)">{{ item.name }}</el-button>
     </div>
   </card-layout>
 </template>
@@ -14,7 +14,8 @@ export default {
   name: 'TagList',
   data() {
     return {
-      tagList: []
+      tagList: [],
+      loading: true
     }
   },
   created() {
@@ -22,8 +23,16 @@ export default {
   },
   methods: {
     async fetchData() {
-      const { data } = await this.$api.getTagList()
-      this.tagList = data
+      try {
+        this.loading = true
+        const { data } = await this.$api.getTagList()
+        this.tagList = data
+      } finally {
+        this.loading = false
+      }
+    },
+    handleTagClick(tag) {
+      this.$emit('tag-click', tag)
     }
   }
 }
@@ -33,9 +42,13 @@ export default {
 .tag-list {
   text-align: left;
 
-  .tag-btn {
-    margin-right: 5px;
-    margin-bottom: 10px;
+  .content {
+    min-height: 3rem;
+
+    .tag-btn {
+      margin-right: 5px;
+      margin-bottom: 10px;
+    }
   }
 }
 </style>

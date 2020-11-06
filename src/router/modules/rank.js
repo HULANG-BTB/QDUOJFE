@@ -6,6 +6,11 @@ export default [
   {
     path: '/rank',
     component: IndexLayout,
+    meta: {
+      title: 'rank',
+      icon: 'el-icon-s-marketing'
+    },
+    sort: 4,
     children: [
       {
         path: 'acm',

@@ -1,7 +1,7 @@
 <template>
   <card-layout class="problem-list">
     <template #title>
-      {{ $t('problem.list.tags') }}
+      {{ $t('problem.list.problems') }}
     </template>
     <template #toobar>
       <el-form :model="search" ref="search" inline>
@@ -19,7 +19,7 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="resetForm('search')">Reset</el-button>
+          <el-button type="primary" @click="handleReset('search')">Reset</el-button>
         </el-form-item>
       </el-form>
     </template>
@@ -95,6 +95,18 @@ export default {
     // 表格行双击
     handleDbClick(row) {
       this.$router.push({ name: 'ProblemDetail', params: { id: row._id } })
+    },
+
+    // 搜索标签
+    searchWithTag(tag) {
+      this.search.tag = tag
+      this.onQuery()
+    },
+
+    // 重置表单
+    handleReset(form) {
+      delete this.search.tag
+      this.resetForm(form)
     }
   }
 }

@@ -6,19 +6,24 @@ export default [
   {
     path: '/problem',
     component: IndexLayout,
-    redirect: '/problem/list',
+    meta: {
+      title: 'problem',
+      icon: 'el-icon-s-grid'
+    },
+    sort: 1,
     children: [
       {
-        path: 'list',
+        path: '',
         component: Components['problem-list'],
         name: 'ProblemList',
-        meta: { title: '问题' }
+        meta: { title: 'problem', icon: 'el-icon-s-grid' }
       },
       {
-        path: 'detail/:id',
+        path: ':id',
         component: Components['problem-detail'],
         name: 'ProblemDetail',
-        meta: { title: '问题详细' }
+        meta: { title: '问题详细' },
+        hidden: true
       }
     ]
   }

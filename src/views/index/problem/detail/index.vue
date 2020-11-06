@@ -3,21 +3,21 @@
     <el-row :gutter="18">
       <el-col :span="21">
         <el-row>
-          <problem-details :problem="problem"></problem-details>
+          <problem-details v-if="problem" :problem="problem"></problem-details>
         </el-row>
         <el-row style="margin-top: 20px">
-          <problem-submit :problem="problem"></problem-submit>
+          <problem-submit v-if="problem" :problem="problem"></problem-submit>
         </el-row>
       </el-col>
       <el-col :span="3">
         <el-row>
-          <problem-submissions :problem="problem"></problem-submissions>
+          <problem-submissions v-if="problem" :problem="problem"></problem-submissions>
         </el-row>
         <el-row style="margin-top: 20px">
-          <problem-info :problem="problem"></problem-info>
+          <problem-info v-if="problem" :problem="problem"></problem-info>
         </el-row>
         <el-row style="margin-top: 20px">
-          <problem-statistic :problem="problem"></problem-statistic>
+          <problem-statistic v-if="problem" :problem="problem"></problem-statistic>
         </el-row>
       </el-col>
     </el-row>
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      problem: {},
+      problem: null,
       id: this.$route.params.id
     }
   },

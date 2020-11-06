@@ -6,7 +6,7 @@ const paggingMixin = {
         paging: true,
         total: 0,
         offset: 0,
-        limit: 20,
+        limit: parseInt(this.$route.query.size) || 20,
         page: parseInt(this.$route.query.page) || 1
       }
     }
@@ -14,7 +14,6 @@ const paggingMixin = {
   methods: {
     // 获取列表数据
     async _featchData() {
-      this.handlePushRoute()
       const { grid, featchData, pagging } = this
       pagging.offset = (pagging.page - 1) * pagging.limit
       grid.loading = true
@@ -43,6 +42,7 @@ const paggingMixin = {
       pagging.offset = 0
       pagging.page = 1
       _featchData()
+      this.handlePushRoute()
     },
 
     // 页码变化
@@ -50,6 +50,7 @@ const paggingMixin = {
       const { pagging, _featchData } = this
       pagging.page = page
       _featchData()
+      this.handlePushRoute()
     },
 
     // 页容量变化
@@ -58,22 +59,33 @@ const paggingMixin = {
       pagging.offset = 0
       pagging.limit = limit
       _featchData()
+      this.handlePushRoute()
     },
 
     // 重置表单
     resetForm(formName) {
       this.$refs[formName].resetFields()
       this.onQuery()
+      this.handlePushRoute()
     },
 
     // 设置路由
     handlePushRoute() {
+      const { pagging, search } = this
+      const query = {}
+      query.page = pagging.page
+      if (pagging.limit !== 20) {
+        query.size = pagging.limit
+      }
+      console.log(search)
+      Object.keys(search).forEach((key) => {
+        if (search[key]) {
+          query[key] = search[key]
+        }
+      })
       this.$router.push({
         path: this.$route.path,
-        query: {
-          ...this.search,
-          page: this.pagging.page
-        }
+        query
       })
     }
   }

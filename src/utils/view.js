@@ -1,8 +1,8 @@
-import defaultSettings from '@/settings'
+import defaultSettings from '@/config/system.js'
 
 const title = defaultSettings.title || ''
 
-export default function getPageTitle(pageTitle) {
+export function getPageTitle(pageTitle) {
   if (pageTitle) {
     return `${pageTitle} - ${title}`
   }

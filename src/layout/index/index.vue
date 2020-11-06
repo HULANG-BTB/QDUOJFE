@@ -23,7 +23,7 @@
 </template>
 
 <script scoped>
-import NavBar from './components/nav-bar'
+import NavBar from './components/nav-bar/index'
 export default {
   name: 'IndexLayout',
   components: {

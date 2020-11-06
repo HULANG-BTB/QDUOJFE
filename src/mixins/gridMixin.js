@@ -18,7 +18,7 @@ const gridMixin = {
       grid.loading = true
       try {
         const data = await featchData() // 实现点1（必要，列表数据获取）
-        content = data.content
+        content = data.results
       } catch (error) {
         console.log(error)
       }

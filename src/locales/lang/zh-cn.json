@@ -53,7 +53,9 @@
     "submit": {
       "language": "编程语言",
       "theme": "主题",
-      "submit": "提交"
+      "submit": "提交",
+      "reset": "确定重置你得代码吗？",
+      "status": "状态"
     },
     "info": {
       "title": "提交信息",
@@ -69,6 +71,35 @@
     "statistic": {
       "title": "统计信息",
       "detail": "详细"
+    },
+    "submissions": {
+      "title": "提交列表"
+    }
+  },
+  "submission": {
+    "Accepted": "答案正确",
+    "Time_Limit_Exceeded": "运行超时",
+    "Memory_Limit_Exceeded": "内存超限",
+    "Runtime_Error": "运行时错误",
+    "System_Error": "系统错误",
+    "Pending": "等待评分",
+    "Partial_Accepted": "部分正确",
+    "Compile_Error": "编译失败",
+    "Rejudge": "重新评分"
+  },
+  "message": {
+    "success": "成功！",
+    "error": "错误！",
+    "failed": "失败！"
+  },
+  "contest": {
+    "contests": "竞赛列表",
+    "meta": {
+      "start": "时间",
+      "end": "时间",
+      "rule": "规则",
+      "type": "类型",
+      "creater": "创建者"
     }
   }
 }

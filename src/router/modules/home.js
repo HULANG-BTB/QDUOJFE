@@ -7,12 +7,16 @@ export default [
     path: '/',
     component: IndexLayout,
     redirect: '/home',
+    meta: {
+      title: 'home'
+    },
+    sort: 0,
     children: [
       {
         path: 'home',
         component: Components['home'],
         name: 'Home',
-        meta: { title: '首页' }
+        meta: { title: 'home', icon: 'el-icon-s-home' }
       }
     ]
   }
