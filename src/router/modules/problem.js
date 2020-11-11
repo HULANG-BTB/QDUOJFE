@@ -19,7 +19,7 @@ export default [
         meta: { title: 'problem', icon: 'el-icon-s-grid' }
       },
       {
-        path: ':id',
+        path: ':problem_id',
         component: Components['problem-detail'],
         name: 'ProblemDetail',
         meta: { title: '问题详细' },

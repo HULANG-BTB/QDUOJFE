@@ -9,14 +9,14 @@
 
 <script>
 export default {
-  name: 'ContestNav',
+  name: 'ContestMenu',
   data() {
     return {
       menus: [
         {
           icon: 'home',
           title: 'Overview',
-          index: 'ContesInfo',
+          index: 'ContestInfo',
           access: false
         },
         {
@@ -28,13 +28,13 @@ export default {
         {
           icon: 'copy',
           title: 'Problems',
-          index: 'ContesProblem',
+          index: 'ContestProblemList',
           access: true
         },
         {
           icon: 'list',
           title: 'Submissions',
-          index: 'submissions',
+          index: 'ContestSubmissionList',
           access: true
         },
         {
@@ -47,9 +47,13 @@ export default {
     }
   },
   props: {
+    contest: {
+      type: Object,
+      required: true
+    },
     access: {
       type: Boolean,
-      default: () => false
+      require: true
     }
   },
   computed: {
@@ -60,10 +64,7 @@ export default {
   methods: {
     onMenuSelected(index) {
       this.$router.push({
-        name: index,
-        params: {
-          id: this.$route.params.id
-        }
+        name: index
       })
     }
   }

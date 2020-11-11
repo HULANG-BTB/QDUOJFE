@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       problem: null,
-      id: this.$route.params.id
+      contest: null
     }
   },
   created() {
@@ -53,7 +53,7 @@ export default {
     async fetchData() {
       const { data } = await this.$api.getProblemInfo({
         params: {
-          problem_id: this.id
+          problem_id: this.$route.params.problem_id
         }
       })
       this.problem = data

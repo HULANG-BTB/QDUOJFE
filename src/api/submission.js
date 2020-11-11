@@ -19,5 +19,17 @@ export default [
     method: 'getSubmissionExists',
     url: `${baseUrl}_exists`,
     type: 'get'
+  },
+  {
+    name: '获取提交列表',
+    method: 'getSubmissionList',
+    url: `${baseUrl}s`,
+    type: 'get'
+  },
+  {
+    name: '设置题目分享状态',
+    method: 'changeShareStatus',
+    url: `${baseUrl}`,
+    type: 'post'
   }
 ]

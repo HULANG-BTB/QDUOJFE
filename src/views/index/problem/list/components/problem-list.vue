@@ -94,7 +94,7 @@ export default {
 
     // 表格行双击
     handleDbClick(row) {
-      this.$router.push({ name: 'ProblemDetail', params: { id: row._id } })
+      this.$router.push({ name: 'ProblemDetail', params: { problem_id: row._id } })
     },
 
     // 搜索标签

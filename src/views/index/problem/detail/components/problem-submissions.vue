@@ -12,6 +12,12 @@ export default {
   name: 'ProblemSubmissions',
   methods: {
     handleSubmissionsClick() {
+      this.$router.push({
+        name: 'Submission',
+        query: {
+          problem_id: this.$route.params.problem_id
+        }
+      })
       console.log('submissions')
     }
   }

@@ -1,4 +1,4 @@
-export const category = '用户相关接口'
+export const category = '排名相关接口'
 const baseUrl = '/api'
 
 export default [

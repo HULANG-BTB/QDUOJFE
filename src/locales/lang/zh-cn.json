@@ -77,15 +77,20 @@
     }
   },
   "submission": {
-    "Accepted": "答案正确",
-    "Time_Limit_Exceeded": "运行超时",
-    "Memory_Limit_Exceeded": "内存超限",
-    "Runtime_Error": "运行时错误",
-    "System_Error": "系统错误",
-    "Pending": "等待评分",
-    "Partial_Accepted": "部分正确",
-    "Compile_Error": "编译失败",
-    "Rejudge": "重新评分"
+    "status": {
+      "Accepted": "答案正确",
+      "Time_Limit_Exceeded": "运行超时",
+      "Memory_Limit_Exceeded": "内存超限",
+      "Runtime_Error": "运行时错误",
+      "System_Error": "系统错误",
+      "Pending": "等待评分",
+      "Partial_Accepted": "部分正确",
+      "Compile_Error": "编译失败",
+      "Rejudge": "重新评分",
+      "Submitting": "正在提交",
+      "Judging": "正在评分",
+      "Wrong_Answer": "答案错误"
+    }
   },
   "message": {
     "success": "成功！",

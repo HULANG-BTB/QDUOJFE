@@ -31,6 +31,12 @@ export default [
     method: 'getContestProblem',
     url: `${baseUrl}/problem`,
     type: 'get'
+  },
+  {
+    name: '获取竞赛提交列表',
+    method: 'getContestSubmissionList',
+    url: `${baseUrl}_submissions`,
+    type: 'get'
   }
   // {
   //   name: '获取标签列表',

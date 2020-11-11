@@ -26,19 +26,19 @@
         <div class="sample" v-for="(sample, index) in problem.samples" :key="index">
           <el-row :gutter="50">
             <el-col :span="12">
-              <el-collapse-item>
+              <el-collapse-item :name="`sample_input_${index + 1}`">
                 <template slot="title">
                   {{ `${$t('problem.detail.sample.input')} #${index + 1}` }}
-                  <i class="el-icon-document-copy" style="margin-left: 10px" v-clipboard:copy="sample.input" v-clipboard:success="handleOnCopy" v-clipboard:error="handleOnError"></i>
+                  <i class="el-icon-document-copy" style="margin-left: 10px" v-clipboard:copy="sample.input" v-clipboard:success="handleOnCopy" v-clipboard:error="handleOnError" @click.stop></i>
                 </template>
                 <pre>{{ sample.input }}</pre>
               </el-collapse-item>
             </el-col>
             <el-col :span="12">
-              <el-collapse-item>
+              <el-collapse-item :name="`sample_output_${index + 1}`">
                 <template slot="title">
                   {{ `${$t('problem.detail.sample.output')} #${index + 1}` }}
-                  <i class="el-icon-document-copy" style="margin-left: 10px" v-clipboard:copy="sample.output" v-clipboard:success="handleOnCopy" v-clipboard:error="handleOnError"></i>
+                  <i class="el-icon-document-copy" style="margin-left: 10px" v-clipboard:copy="sample.output" v-clipboard:success="handleOnCopy" v-clipboard:error="handleOnError" @click.stop></i>
                 </template>
                 <pre>{{ sample.input }}</pre>
               </el-collapse-item>
@@ -73,6 +73,9 @@ export default {
       required: true
     }
   },
+  created() {
+    this.activeSample()
+  },
   methods: {
     // 复制成功
     handleOnCopy() {
@@ -82,6 +85,14 @@ export default {
     // 复制失败
     handleOnError() {
       this.$message.error('复制失败！')
+    },
+
+    // activeSample
+    activeSample() {
+      this.problem.samples.forEach((val, index) => {
+        this.currentActive.push(`sample_input_${index + 1}`)
+        this.currentActive.push(`sample_output_${index + 1}`)
+      })
     }
   }
 }

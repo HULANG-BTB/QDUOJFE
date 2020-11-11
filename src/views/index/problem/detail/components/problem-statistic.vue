@@ -95,6 +95,8 @@ export default {
   .chart-pie {
     width: calc(100vw / 24 * 2);
     height: calc(100vw / 24 * 2 + 40px);
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>

@@ -67,7 +67,7 @@ export default {
   },
   methods: {
     onContestItemDbClick() {
-      this.$router.push({ name: 'ContestDetail', params: { id: this.data.id } })
+      this.$router.push({ name: 'ContestInfo', params: { contest_id: this.data.id } })
     }
   }
 }

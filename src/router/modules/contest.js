@@ -19,7 +19,7 @@ export default [
         meta: { title: 'contest', icon: 'el-icon-s-platform' }
       },
       {
-        path: ':id',
+        path: ':contest_id',
         component: Components['contest-detail'],
         meta: { title: 'contest' },
         hidden: true,
@@ -27,21 +27,49 @@ export default [
           {
             path: '',
             component: Components['contest-info'],
-            name: 'ContesInfo',
+            name: 'ContestInfo',
             meta: { title: 'contest' },
             hidden: true
           },
           {
             path: 'problem',
             component: Components['contest-problem'],
-            name: 'ContesProblem',
             meta: { title: 'contest' },
             hidden: true,
             children: [
               {
-                path: ':pid',
+                path: '',
+                component: Components['contest-problem-list'],
+                name: 'ContestProblemList',
+                meta: { title: 'contest' },
+                hidden: true
+              },
+              {
+                path: ':problem_id',
                 component: Components['contest-problem-detail'],
                 name: 'ContestProblemDetail',
+                meta: { title: 'contest' },
+                hidden: true
+              }
+            ]
+          },
+          {
+            path: 'submission',
+            component: Components['contest-submission'],
+            meta: { title: 'contest' },
+            hidden: true,
+            children: [
+              {
+                path: '',
+                component: Components['contest-submission-list'],
+                name: 'ContestSubmissionList',
+                meta: { title: 'contest' },
+                hidden: true
+              },
+              {
+                path: ':submission_id',
+                component: Components['contest-submission-detail'],
+                name: 'ContestSubmissionDetail',
                 meta: { title: 'contest' },
                 hidden: true
               }

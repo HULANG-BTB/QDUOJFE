@@ -1,0 +1,159 @@
+<template>
+  <card-layout class="problem-list">
+    <template #title>
+      提交列表
+    </template>
+    <template #toobar>
+      <el-form :model="search" ref="search" inline>
+        <el-form-item prop="result">
+          <el-select v-model="search.result" @change="onQuery">
+            <el-option v-for="item in JudgeStatus" :key="item.key" :label="item.name" :value="item.key"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item prop="myself">
+          <el-switch v-model="search.myself" active-value="1" inactive-value="0" active-text="我的" inactive-text="所有" @change="onQuery"></el-switch>
+        </el-form-item>
+        <el-form-item prop="username">
+          <el-input v-model="search.username" @keyup.enter.native="onQuery">
+            <i slot="suffix" class="el-input__icon el-icon-search" @click="onQuery"></i>
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="handleReset('search')">Reset</el-button>
+        </el-form-item>
+      </el-form>
+    </template>
+    <el-table :data="grid.rows" v-loading="grid.loading">
+      <el-table-column align="center" prop="create_time" label="提交时间" #default="{row}">{{ row.create_time | dataTime }}</el-table-column>
+      <el-table-column align="center" prop="id" label="ID" #default="{row}">
+        <el-link v-if="row.show_link" type="primary" :underline="false" @click="handleIdClick(row.id)">{{ row.id | hashId }}</el-link>
+        <span v-else>{{ row.id | hashId }}</span>
+      </el-table-column>
+      <el-table-column align="center" prop="result" label="状态" #default="{row}">
+        <judge-status-dict alert :value="row.result"></judge-status-dict>
+      </el-table-column>
+      <el-table-column align="center" prop="problem" label="问题" #default="{row}">
+        <el-link type="primary" :underline="false" @click="handleProblemClick(row.problem)">
+          {{ row.problem }}
+        </el-link>
+      </el-table-column>
+      <el-table-column align="center" prop="result" label="时间" #default="{row}">{{ row.statistic_info.time_cost | timeFormat }}</el-table-column>
+      <el-table-column align="center" prop="result" label="内存" #default="{row}">{{ row.statistic_info.memory_cost | memoryFormat }}</el-table-column>
+      <el-table-column align="center" prop="language" label="语言"></el-table-column>
+      <el-table-column align="center" prop="username" label="作者" #default="{row}">
+        <el-link type="primary" :underline="false" href="#">
+          {{ row.username }}
+        </el-link>
+      </el-table-column>
+    </el-table>
+    <template #pagination>
+      <el-pagination background layout="total, sizes, prev, pager, next" :total="pagging.total" :page-size="pagging.limit" :current-page="pagging.page" @current-change="onChangeCurrentPage" @size-change="onChangePageSize"> </el-pagination>
+    </template>
+  </card-layout>
+</template>
+
+<script>
+import paggingMixin from '@/mixins/paggingMixin'
+import gridMixin from '@/mixins/gridMixin'
+import moment from 'moment'
+import JUDGE_STATUS from '@/constants/judgeStatus'
+import JudgeStatusDict from '@/components/dict/judge-status'
+
+export default {
+  name: 'SubmissionList',
+  mixins: [gridMixin, paggingMixin],
+  components: {
+    JudgeStatusDict
+  },
+  data() {
+    return {
+      search: {
+        result: '',
+        username: '',
+        problem_id: this.$route.query.problem_id
+      },
+      showTags: false
+    }
+  },
+  created() {
+    const { _featchData } = this
+    _featchData()
+  },
+  computed: {
+    JudgeStatus() {
+      let ret = []
+      ret.push({ name: 'All', key: null })
+      Object.keys(JUDGE_STATUS).forEach((key) => {
+        ret.push({ ...JUDGE_STATUS[key], key: key })
+      })
+      return ret
+    }
+  },
+  methods: {
+    // 获取数据
+    async featchData() {
+      const { search, pagging } = this
+      const { data } = await this.$api.getSubmissionList({
+        params: {
+          ...search,
+          ...pagging
+        }
+      })
+      return data
+    },
+
+    // 搜索标签
+    searchWithTag(tag) {
+      this.search.tag = tag
+      this.onQuery()
+    },
+
+    // 重置表单
+    handleReset(form) {
+      delete this.search.tag
+      this.resetForm(form)
+    },
+
+    // 点击题目
+    handleProblemClick(id) {
+      this.$router.push({ name: 'ProblemDetail', params: { problem_id: id } })
+    },
+
+    // 点击ID
+    handleIdClick(id) {
+      this.$router.push({ name: 'SubmissionDetail', params: { submission_id: id } })
+    }
+  },
+
+  filters: {
+    dataTime(val) {
+      return moment(val).format('LLL')
+    },
+
+    hashId(val) {
+      return val.substr(0, 12)
+    },
+    memoryFormat(memory) {
+      if (memory === undefined) return '--'
+      // 1048576 = 1024 * 1024
+      let t = parseInt(memory) / 1048576
+      return String(t.toFixed(0)) + 'MB'
+    },
+
+    timeFormat(time) {
+      if (time === undefined) return '--'
+      return time + 'ms'
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.problem-list {
+  .card-box {
+    .title {
+      text-align: left;
+    }
+  }
+}
+</style>

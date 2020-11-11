@@ -4,7 +4,7 @@ import Components from '@/views/index'
 
 export default [
   {
-    path: '/status',
+    path: '/submission',
     component: IndexLayout,
     meta: {
       title: 'status',
@@ -14,8 +14,15 @@ export default [
     children: [
       {
         path: '',
-        component: Components['status'],
-        name: 'Status',
+        component: Components['submission-list'],
+        name: 'Submission',
+        meta: { title: '状态' },
+        hidden: true
+      },
+      {
+        path: ':submission_id',
+        component: Components['submission-detail'],
+        name: 'SubmissionDetail',
         meta: { title: '状态' },
         hidden: true
       }
