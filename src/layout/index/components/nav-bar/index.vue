@@ -23,6 +23,14 @@
         <el-button @click="handleRegister" round>{{ $t('navigation.user.register') }}</el-button>
       </template>
     </div>
+    <div class="language">
+      <el-dropdown trigger="click" @command="handleLanguageChange">
+        <span class="el-dropdown-link"> {{ settings.language | languageMap }}<i class="el-icon-arrow-down el-icon--right"></i> </span>
+        <el-dropdown-menu slot="dropdown" style="min-width: 80px; text-align: center;">
+          <el-dropdown-item v-for="lang in languages" :key="lang.value" :command="lang.value" style="padding: 2px 16px;" divided>{{ lang.label }}</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
     <el-dialog :visible.sync="dialog.visiable" append-to-body width="400px">
       <template #title>{{ $t(`navigation.user.${dialog.mode}`) }}</template>
       <component v-if="dialog.visiable" :is="currentComponent" :dialog="dialog"> </component>
@@ -31,6 +39,7 @@
 </template>
 
 <script>
+import { languages } from '@/locales'
 import MenuList from './menu/menu-list'
 const asyncComponentsMap = {
   login: () => import('@/components/user/login'),
@@ -41,10 +50,7 @@ export default {
   data() {
     return {
       activeIndex: this.$route.path,
-      dialog: {
-        mode: 'login',
-        visiable: false
-      }
+      languages: languages
     }
   },
   components: {
@@ -57,15 +63,25 @@ export default {
       }
     },
     handleLogin() {
-      this.dialog.mode = 'login'
-      this.dialog.visiable = true
+      this.$store.dispatch('user/showLoginDialog')
     },
     handleRegister() {
-      this.dialog.mode = 'register'
-      this.dialog.visiable = true
+      this.$store.dispatch('user/showRegisterDialog')
     },
     handleCommand(command) {
-      console.log(command)
+      if (command === '/user/home') {
+        this.$router.push({ name: 'UserHome' })
+      } else if (command === '/user/submissions') {
+        this.$router.push({ name: 'Submission', query: { myself: 1 } })
+      } else if (command === '/user/settings') {
+        this.$router.push({ name: 'UserSetting' })
+      } else if (command === '/user/logout') {
+        this.$store.dispatch('user/logout')
+        this.$router.push({ name: 'Home' })
+      }
+    },
+    handleLanguageChange(language) {
+      this.$store.dispatch('settings/setLanguage', language)
     }
   },
   computed: {
@@ -76,10 +92,19 @@ export default {
       return asyncComponentsMap[this.dialog.mode]
     },
     user() {
-      return this.$store.state.user.user
+      return this.$store.getters['user/user']
     },
     routes() {
       return this.$router.options.routes
+    },
+    dialog() {
+      return this.$store.getters['user/dialog']
+    }
+  },
+  filters: {
+    languageMap(language) {
+      const item = languages.find((val) => val.value === language)
+      return item?.label || 'unknow'
     }
   }
 }
@@ -112,7 +137,8 @@ export default {
     overflow: auto;
   }
 
-  .user {
+  .user,
+  .language {
     float: right;
     height: 60px;
     line-height: 60px;

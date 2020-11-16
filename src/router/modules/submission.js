@@ -16,14 +16,14 @@ export default [
         path: '',
         component: Components['submission-list'],
         name: 'Submission',
-        meta: { title: '状态' },
+        meta: { title: 'status' },
         hidden: true
       },
       {
         path: ':submission_id',
         component: Components['submission-detail'],
         name: 'SubmissionDetail',
-        meta: { title: '状态' },
+        meta: { title: 'status' },
         hidden: true
       }
     ]

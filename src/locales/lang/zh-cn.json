@@ -55,7 +55,10 @@
       "theme": "主题",
       "submit": "提交",
       "reset": "确定重置你得代码吗？",
-      "status": "状态"
+      "status": "状态",
+      "submited": "代码已经提交",
+      "sloved": "问题已解决",
+      "contest_ended": "比赛已经结束!"
     },
     "info": {
       "title": "提交信息",
@@ -66,7 +69,8 @@
       "create": "创建人",
       "level": "难度",
       "source": "来源",
-      "tag": "标签"
+      "tag": "标签",
+      "show": "显示"
     },
     "statistic": {
       "title": "统计信息",
@@ -90,6 +94,24 @@
       "Submitting": "正在提交",
       "Judging": "正在评分",
       "Wrong_Answer": "答案错误"
+    },
+    "list": {
+      "title": "提交列表",
+      "my": "我的",
+      "all": "所有",
+      "reset": "重置",
+      "submit_time": "提交时间",
+      "id": "提交编号",
+      "status": "状态",
+      "problem": "问题",
+      "time": "时间",
+      "memory": "内存",
+      "language": "语言",
+      "author": "作者",
+      "real_time": "真实时间",
+      "signal": "信号",
+      "share": "分享",
+      "unshare": "取消分享"
     }
   },
   "message": {
@@ -105,6 +127,70 @@
       "rule": "规则",
       "type": "类型",
       "creater": "创建者"
+    },
+    "nav": {
+      "overview": "详细信息",
+      "announcements": "公告",
+      "problems": "题目",
+      "submissions": "提交信息",
+      "rankings": "排名"
+    },
+    "password": "比赛密码"
+  },
+  "announcements": {
+    "list": "公告列表",
+    "no": "暂无",
+    "refresh": "刷新",
+    "back": "返回"
+  },
+  "rank": {
+    "title": "rankings",
+    "top10": "Top 10 teams",
+    "user": "用户",
+    "accepted": "通过",
+    "submit": "提交",
+    "accepted_rate": "通过率",
+    "score": "分数",
+    "total_time": "总时间",
+    "total_score": "总分数",
+    "save_image": "保存图片",
+    "category": "分类",
+    "mood": "签名"
+  },
+  "about": {
+    "judger": {
+      "pending_judging": {
+        "title": "等待评分 & 正在评分",
+        "value": "您的解答将很快被测评，请等待结果。"
+      },
+      "compile_error": {
+        "title": "编译失败",
+        "value": "无法编译您的源代码，点击链接查看编译器的输出。"
+      },
+      "accepted": {
+        "title": "答案正确",
+        "value": "你的解题方法是正确的。"
+      },
+      "wrong_answer": {
+        "title": "答案错误",
+        "value": "你的程序输出结果与判题程序的答案不符。"
+      },
+      "runtime_error": {
+        "title": "运行时错误",
+        "value": "您的程序异常终止，可能的原因是：段错误，被零除或用非0的代码退出程序。"
+      },
+      "time_limit_exceeded": {
+        "title": "运行超时",
+        "value": "您的程序使用的 CPU 时间已超出限制。"
+      },
+      "memory_limit_exceeded": {
+        "title": "内存超限",
+        "value": "程序实际使用的内存已超出限制。"
+      },
+      "system_error": {
+        "title": "系统错误",
+        "value": "糟糕，判题程序出了问题。请报告给管理员。"
+      }
     }
   }
 }

@@ -12,7 +12,6 @@
       <template #title>
         <span>{{ $t('problem.statistic.title') }}</span>
       </template>
-
       <e-charts ref="detailPie" :options="largePieChartOptions"></e-charts>
     </el-dialog>
   </card-layout>

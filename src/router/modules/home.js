@@ -7,9 +7,6 @@ export default [
     path: '/',
     component: IndexLayout,
     redirect: '/home',
-    meta: {
-      title: 'home'
-    },
     sort: 0,
     children: [
       {

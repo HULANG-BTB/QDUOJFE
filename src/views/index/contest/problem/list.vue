@@ -57,17 +57,28 @@ export default {
     }
   },
   created() {
-    const { _featchData } = this
-    _featchData()
+    const { _fetchData } = this
+    _fetchData()
   },
   methods: {
     // 获取数据
-    async featchData() {
+    async fetchData() {
       const { data } = await this.$api.getContestProblem({
         params: {
           contest_id: this.$route.params.contest_id
         }
       })
+      console.log(data)
+      data.sort((a, b) => {
+        if (a._id === b._id) {
+          return 0
+        } else if (a._id < b._id) {
+          return -1
+        } else {
+          return 1
+        }
+      })
+      console.log(data)
       return { results: data }
     },
 

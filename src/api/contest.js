@@ -37,6 +37,18 @@ export default [
     method: 'getContestSubmissionList',
     url: `${baseUrl}_submissions`,
     type: 'get'
+  },
+  {
+    name: '获取竞赛排名列表',
+    method: 'getContestRankList',
+    url: `${baseUrl}_rank`,
+    type: 'get'
+  },
+  {
+    name: '获取竞赛排名列表',
+    method: 'getContestAnnouncementList',
+    url: `${baseUrl}/announcement`,
+    type: 'get'
   }
   // {
   //   name: '获取标签列表',

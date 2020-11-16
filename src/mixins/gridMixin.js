@@ -12,12 +12,12 @@ const gridMixin = {
   },
   methods: {
     // 获取列表数据
-    async _featchData() {
-      const { grid, featchData } = this
+    async _fetchData() {
+      const { grid, fetchData } = this
       let content = []
       grid.loading = true
       try {
-        const data = await featchData() // 实现点1（必要，列表数据获取）
+        const data = await fetchData() // 实现点1（必要，列表数据获取）
         content = data.results
       } catch (error) {
         console.log(error)

@@ -11,7 +11,7 @@
         <span>Author: {{ submission.username }} </span>
       </el-alert>
     </el-row>
-    <el-row style="margin-top: 1rem">
+    <el-row v-if="submission.info" style="margin-top: 1rem">
       <el-table :data="submission.info.data">
         <el-table-column align="center" label="ID" prop="id" type="index"></el-table-column>
         <el-table-column align="center" label="状态" prop="result">
@@ -43,7 +43,11 @@ export default {
   name: 'SubmissionDetail',
   data() {
     return {
-      submission: {},
+      submission: {
+        info: {
+          data: []
+        }
+      },
       tableData: [],
       loading: false
     }

@@ -2,7 +2,7 @@
   <el-menu default-active="overview" class="contest-sidebar" @select="onMenuSelected">
     <el-menu-item v-for="item in menus" class="contest-sidebar-item" :key="item.title" :index="item.index" :disabled="item.access && !access && needPassword">
       <svg-icon :icon="item.icon" style="margin-right: 5px; font-size: 16px"></svg-icon>
-      <span slot="title"> {{ item.title }}</span>
+      <span slot="title"> {{ $t(`contest.nav.${item.title}`) }}</span>
     </el-menu-item>
   </el-menu>
 </template>
@@ -15,32 +15,32 @@ export default {
       menus: [
         {
           icon: 'home',
-          title: 'Overview',
+          title: 'overview',
           index: 'ContestInfo',
           access: false
         },
         {
           icon: 'message',
-          title: 'Announcements',
-          index: 'announcements',
+          title: 'announcements',
+          index: 'ContestAnnouncement',
           access: true
         },
         {
           icon: 'copy',
-          title: 'Problems',
+          title: 'problems',
           index: 'ContestProblemList',
           access: true
         },
         {
           icon: 'list',
-          title: 'Submissions',
+          title: 'submissions',
           index: 'ContestSubmissionList',
           access: true
         },
         {
           icon: 'layers',
-          title: 'Rankings',
-          index: 'rankings',
+          title: 'rankings',
+          index: 'ContestRank',
           access: true
         }
       ]

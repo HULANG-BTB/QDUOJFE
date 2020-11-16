@@ -41,3 +41,12 @@ body {
 .markdown-body {
   @import './markdown.scss';
 }
+
+#nprogress {
+  .bar {
+      z-index: 2500;
+  }
+  .spinner {
+      z-index: 2500;
+  }
+}

@@ -2,7 +2,7 @@
   <card-layout class="contest-meta">
     <template #title>
       <i class="el-icon-lock" style="margin-right: 10px"></i>
-      比赛密码
+      {{ $t('contest.password') }}
     </template>
     <el-input placeholder="password" type="password" v-model="password" @keyup.enter.native="handleSubmitPassowrd">
       <el-button slot="append" icon="el-icon-check" @click="handleSubmitPassowrd"></el-button>

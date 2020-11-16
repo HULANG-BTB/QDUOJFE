@@ -13,21 +13,21 @@ const paggingMixin = {
   },
   methods: {
     // 获取列表数据
-    async _featchData() {
-      const { grid, featchData, pagging } = this
+    async _fetchData() {
+      const { grid, fetchData, pagging } = this
       pagging.offset = (pagging.page - 1) * pagging.limit
       grid.loading = true
       let content = []
       let total = 0
       // let number = 1; let size = pagging.limit
       try {
-        const data = await featchData() // 实现点3（必要）
+        const data = await fetchData() // 实现点3（必要）
         content = data.results
         total = data.total
         // number = data.number
         // size = data.size
       } catch (error) {
-        console.log(error)
+        error
       }
       grid.rows = content
       pagging.total = total
@@ -38,27 +38,27 @@ const paggingMixin = {
 
     // 点击查询
     onQuery() {
-      const { pagging, _featchData } = this
+      const { pagging, _fetchData } = this
       pagging.offset = 0
       pagging.page = 1
-      _featchData()
+      _fetchData()
       this.handlePushRoute()
     },
 
     // 页码变化
     onChangeCurrentPage(page) {
-      const { pagging, _featchData } = this
+      const { pagging, _fetchData } = this
       pagging.page = page
-      _featchData()
+      _fetchData()
       this.handlePushRoute()
     },
 
     // 页容量变化
     onChangePageSize(limit) {
-      const { pagging, _featchData } = this
+      const { pagging, _fetchData } = this
       pagging.offset = 0
       pagging.limit = limit
-      _featchData()
+      _fetchData()
       this.handlePushRoute()
     },
 
@@ -77,7 +77,6 @@ const paggingMixin = {
       if (pagging.limit !== 20) {
         query.size = pagging.limit
       }
-      console.log(search)
       Object.keys(search).forEach((key) => {
         if (search[key]) {
           query[key] = search[key]

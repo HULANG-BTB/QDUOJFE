@@ -7,7 +7,7 @@ export default [
     path: '/about',
     component: IndexLayout,
     meta: {
-      title: 'about',
+      title: 'about.about',
       icon: 'el-icon-info'
     },
     sort: 5,
@@ -16,13 +16,13 @@ export default [
         path: 'judger',
         component: Components['about-judger'],
         name: 'Judger',
-        meta: { title: 'Judger' }
+        meta: { title: 'about.judger' }
       },
       {
         path: 'faq',
         component: Components['about-faq'],
         name: 'FAQ',
-        meta: { title: 'FAQ' }
+        meta: { title: 'about.faq' }
       }
     ]
   }

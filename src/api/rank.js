@@ -1,17 +1,11 @@
 export const category = '排名相关接口'
-const baseUrl = '/api'
+const baseUrl = '/api/user_rank'
 
 export default [
   {
-    name: '登录请求接口',
-    method: 'login',
-    url: `${baseUrl}/login`,
-    type: 'post'
-  },
-  {
-    name: '获取用户信息',
-    method: 'getProfile',
-    url: `${baseUrl}/profile`,
+    name: '分页获取排名列表',
+    method: 'getRankList',
+    url: `${baseUrl}`,
     type: 'get'
   }
 ]

@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <el-form ref="form" :model="formData" :rules="rules">
+    <el-form ref="form" :model="formData" :rules="rules" @keyup.enter.native="onSave">
       <el-form-item prop="username">
         <el-input placeholder="username" v-model="formData.username">
           <template #prepend>
@@ -46,9 +46,8 @@ export default {
     }
   },
   methods: {
-    saveData() {
-      console.log(this.$api)
-      this.$api
+    async saveData() {
+      await this.$api
         .login({
           data: this.formData
         })

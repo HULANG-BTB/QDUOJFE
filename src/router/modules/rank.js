@@ -7,7 +7,7 @@ export default [
     path: '/rank',
     component: IndexLayout,
     meta: {
-      title: 'rank',
+      title: 'rank.rank',
       icon: 'el-icon-s-marketing'
     },
     sort: 4,
@@ -16,13 +16,13 @@ export default [
         path: 'acm',
         component: Components['rank-acm'],
         name: 'ACM-Rank',
-        meta: { title: 'ACM排名' }
+        meta: { title: 'rank.acm' }
       },
       {
         path: 'oi',
         component: Components['rank-oi'],
         name: 'OI-Rank',
-        meta: { title: 'OI排名' }
+        meta: { title: 'rank.oi' }
       }
     ]
   }

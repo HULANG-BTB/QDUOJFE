@@ -1,8 +1,8 @@
 <template>
   <div class="submission-detail" v-if="submission.id">
-    <el-row :gutter="50" type="flex" justify="center">
+    <el-row type="flex" justify="center">
       <el-col :span="20">
-        <el-row :gutter="50">
+        <el-row>
           <el-alert :type="type" :closable="false" show-icon>
             <template #title>
               {{ title }}
@@ -13,25 +13,25 @@
             <span>Author: {{ submission.username }} </span>
           </el-alert>
         </el-row>
-        <el-row style="margin-top: 1rem" :gutter="50">
+        <el-row v-if="submission.info" style="margin-top: 1rem">
           <el-table :data="submission.info.data">
-            <el-table-column align="center" label="ID" prop="id" type="index"></el-table-column>
-            <el-table-column align="center" label="状态" prop="result">
+            <el-table-column align="center" :label="$t('submission.list.id')" prop="id" type="index"></el-table-column>
+            <el-table-column align="center" :label="$t('submission.list.status')" prop="result">
               {{ title }}
             </el-table-column>
-            <el-table-column align="center" label="内存" prop="memory" #default="{row}">{{ row.memory | memoryFormat }}</el-table-column>
-            <el-table-column align="center" label="时间" prop="cpu_time" #default="{row}">{{ row.cpu_time | timeFormat }}</el-table-column>
-            <el-table-column align="center" label="真实时间" prop="real_time" #default="{row}">{{ row.real_time | timeFormat }}</el-table-column>
-            <el-table-column align="center" label="信号" prop="signal"></el-table-column>
+            <el-table-column align="center" :label="$t('submission.list.memory')" prop="memory" #default="{row}">{{ row.memory | memoryFormat }}</el-table-column>
+            <el-table-column align="center" :label="$t('submission.list.time')" prop="cpu_time" #default="{row}">{{ row.cpu_time | timeFormat }}</el-table-column>
+            <el-table-column align="center" :label="$t('submission.list.real_time')" prop="real_time" #default="{row}">{{ row.real_time | timeFormat }}</el-table-column>
+            <el-table-column align="center" :label="$t('submission.list.signal')" prop="signal"></el-table-column>
           </el-table>
         </el-row>
-        <el-row style="margin-top: 1rem" :gutter="50">
+        <el-row style="margin-top: 1rem">
           <highlight-code :code="submission.code" :language="submission.language" :border-color="color"></highlight-code>
         </el-row>
-        <el-row style="margin-top: 1rem" :gutter="50">
+        <el-row style="margin-top: 1rem">
           <div class="share-code">
-            <el-button v-if="submission.shared" type="warning" :loading="loading" @click="handleShareClick">取消分享</el-button>
-            <el-button v-else type="primary" :loading="loading" @click="handleShareClick">分享</el-button>
+            <el-button v-if="submission.shared" type="warning" :loading="loading" @click="handleShareClick">{{ $t('submission.list.unshare') }}</el-button>
+            <el-button v-else type="primary" :loading="loading" @click="handleShareClick">{{ $t('submission.list.share') }}</el-button>
           </div>
         </el-row>
       </el-col>
@@ -88,10 +88,10 @@ export default {
     },
 
     // 点击分享按钮
-    handleShareClick() {
+    async handleShareClick() {
       try {
         this.loading = true
-        this.$api
+        await this.$api
           .changeShareStatus({
             data: {
               id: this.submission_id,

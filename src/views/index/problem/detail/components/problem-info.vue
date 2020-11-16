@@ -37,7 +37,7 @@
         <span class="label">{{ $t('problem.info.tag') }}</span>
         <span class="value">
           <el-popover placement="left" width="200" trigger="hover">
-            <el-link type="primary" :underline="false" slot="reference">Show</el-link>
+            <el-link type="primary" :underline="false" slot="reference">{{ $t('problem.info.show') }}</el-link>
             <el-tag v-for="tag in problem.tags" :key="tag"> {{ tag }}</el-tag>
           </el-popover>
         </span>

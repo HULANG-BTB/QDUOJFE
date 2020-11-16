@@ -1,29 +1,35 @@
 import apiConfig from '@/api'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import ProgressBar from '@/utils/progress'
+import Vue from 'vue'
+import store from '@/store'
 
 const interceptors = {}
 
 interceptors.request = (config) => {
-  NProgress.start()
-  // console.log('request', config)
+  ProgressBar.start()
   return config
 }
 
 interceptors.requestError = (error) => {
-  NProgress.done()
-  // console.log('reqError', error)
+  ProgressBar.done()
   return error
 }
 
 interceptors.response = (response) => {
-  NProgress.done()
+  ProgressBar.done()
+  if (response.data.error !== null) {
+    if (response.data.data === 'Please login first') {
+      store.dispatch('user/showLoginDialog')
+    } else {
+      Vue.prototype.$message.error(response.data.data)
+      throw new Error(response.data.data)
+    }
+  }
   return response.data
 }
 
 interceptors.responseError = (error) => {
-  NProgress.done()
-  // console.log('responseError', error)
+  ProgressBar.done()
   return error
 }
 

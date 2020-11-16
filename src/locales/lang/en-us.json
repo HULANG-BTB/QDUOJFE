@@ -2,7 +2,7 @@
   "navigation": {
     "home": "Home",
     "problem": "Problem",
-    "contest": "Conetest",
+    "contest": "Contest",
     "status": "Status",
     "rank": {
       "rank": "Rank",
@@ -13,6 +13,184 @@
       "about": "About",
       "judger": "Judger",
       "faq": "FAQ"
+    },
+    "user": {
+      "login": "Login",
+      "register": "Register",
+      "user": {
+        "home": "Home",
+        "submissions": "Submissions",
+        "settings": "Settings",
+        "logout": "Logout"
+      }
+    }
+  },
+  "problem": {
+    "list": {
+      "problems": "Problem List",
+      "tags": "Tags",
+      "difficult": {},
+      "table": {
+        "index": "index",
+        "title": "Problem",
+        "level": "difficulty",
+        "total": "Submited",
+        "rate": "Rate",
+        "tag": "Tags"
+      }
+    },
+    "detail": {
+      "description": "Description",
+      "input": "Input",
+      "output": "Output",
+      "sample": {
+        "input": "Sample Input",
+        "output": "Sample Output"
+      },
+      "hint": "Hint",
+      "source": "Source"
+    },
+    "submit": {
+      "language": "Language",
+      "theme": "Theme",
+      "submit": "Submit",
+      "reset": "Are you sure reset your code ?",
+      "status": "Status",
+      "submited": "Submit code successfully",
+      "sloved": "You have solved the problem",
+      "contest_ended": "Contest has ended !"
+    },
+    "info": {
+      "title": "Info",
+      "id": "Problem ID",
+      "time": "Time Limit",
+      "memory": "Memory Limit",
+      "mode": "Mode",
+      "create": "Creator",
+      "level": "Difficulty",
+      "source": "Source",
+      "tag": "Tags",
+      "show": "Show"
+    },
+    "statistic": {
+      "title": "Statistic",
+      "detail": "Detail"
+    },
+    "submissions": {
+      "title": "Submissions"
+    }
+  },
+  "submission": {
+    "status": {
+      "Accepted": "Accepted",
+      "Time_Limit_Exceeded": "Time Limit Exceeded",
+      "Memory_Limit_Exceeded": "Memory Limit Exceeded",
+      "Runtime_Error": "Runtime Error",
+      "System_Error": "System Error",
+      "Pending": "Pending",
+      "Partial_Accepted": "Partial Accepted",
+      "Compile_Error": "Compile Error",
+      "Rejudge": "Rejudge",
+      "Submitting": "Submitting",
+      "Judging": "Judging",
+      "Wrong_Answer": "Wrong Answer"
+    },
+    "list": {
+      "title": "Submission List",
+      "my": "my",
+      "all": "all",
+      "reset": "reset",
+      "submit_time": "Date",
+      "id": "id",
+      "status": "Status",
+      "problem": "Problem",
+      "time": "Time",
+      "memory": "Memory",
+      "language": "Language",
+      "author": "Author",
+      "real_time": "Real Time",
+      "signal": "Signal",
+      "share": "Share",
+      "unshare": "Un Share"
+    }
+  },
+  "message": {
+    "success": "Success !",
+    "error": "Error !",
+    "failed": "Failure !"
+  },
+  "contest": {
+    "contests": "Contest List",
+    "meta": {
+      "start": "Start",
+      "end": "End",
+      "rule": "Mode",
+      "type": "Type",
+      "creater": "Creator"
+    },
+    "nav": {
+      "overview": "Overiview",
+      "announcements": "Announcements",
+      "problems": "Problems",
+      "submissions": "Submissions",
+      "rankings": "Rankings"
+    },
+    "password": "password"
+  },
+  "announcements": {
+    "list": "Announcement List",
+    "no": "empty",
+    "refresh": "Refresh",
+    "back": "Back"
+  },
+  "rank": {
+    "title": "rankings",
+    "top10": "Top 10 teams",
+    "user": "User",
+    "accepted": "Accepted",
+    "submit": "Total",
+    "accepted_rate": "Rate",
+    "score": "Score",
+    "total_time": "Total Time",
+    "total_score": "Total Score",
+    "save_image": "Save Image",
+    "category": "Category",
+    "mood": "Mood"
+  },
+  "about": {
+    "judger": {
+      "pending_judging": {
+        "title": "Pending & Judging",
+        "value": "You solution will be judged soon, please wait for result."
+      },
+      "compile_error": {
+        "title": "Compile Error",
+        "value": "Failed to compile your source code. Click on the link to see compiler's output."
+      },
+      "accepted": {
+        "title": "Accepted",
+        "value": "Congratulations. Your solution is correct."
+      },
+      "wrong_answer": {
+        "title": "Wrong Answer",
+        "value": "Your program's output doesn't match judger's answer."
+      },
+      "runtime_error": {
+        "title": "Runtime Error",
+        "value": "Your program terminated abnormally. Possible reasons are: segment fault, divided by zero or exited with code other than 0."
+      },
+      "time_limit_exceeded": {
+        "title": "Time Limit Exceeded",
+        "value": "The CPU time your program used has exceeded limit."
+      },
+      "memory_limit_exceeded": {
+        "title": "Memory Limit Exceeded",
+        "value": "The memory your program actually used has exceeded limit."
+      },
+      "system_error": {
+        "title": "System Error",
+        "value": "Oops, something has gone wrong with the judger. Please report this to administrator."
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <card-layout class="contest-submission-list">
     <template #title>
-      提交列表
+      {{ $t('submission.list.title') }}
     </template>
     <template #toobar>
       <el-form :model="search" ref="search" inline>
@@ -11,7 +11,7 @@
           </el-select>
         </el-form-item>
         <el-form-item prop="myself">
-          <el-switch v-model="search.myself" active-value="1" inactive-value="0" active-text="我的" inactive-text="所有" @change="onQuery"></el-switch>
+          <el-switch v-model="search.myself" active-value="1" inactive-value="0" :active-text="$t('submission.list.my')" :inactive-text="$t('submission.list.all')" @change="onQuery"></el-switch>
         </el-form-item>
         <el-form-item prop="username">
           <el-input v-model="search.username" @keyup.enter.native="onQuery">
@@ -19,28 +19,28 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="handleReset('search')">Reset</el-button>
+          <el-button type="primary" @click="handleReset('search')">{{ $t('submission.list.reset') }}</el-button>
         </el-form-item>
       </el-form>
     </template>
     <el-table :data="grid.rows" v-loading="grid.loading">
-      <el-table-column align="center" prop="create_time" label="提交时间" #default="{row}">{{ row.create_time | dataTime }}</el-table-column>
-      <el-table-column align="center" prop="id" label="ID" #default="{row}">
+      <el-table-column align="center" prop="create_time" :label="$t('submission.list.submit_time')" #default="{row}">{{ row.create_time | dataTime }}</el-table-column>
+      <el-table-column align="center" prop="id" :label="$t('submission.list.id')" #default="{row}">
         <el-link v-if="row.show_link" type="primary" :underline="false" @click="handleIdClick(row.id)">{{ row.id | hashId }}</el-link>
         <span v-else>{{ row.id | hashId }}</span>
       </el-table-column>
-      <el-table-column align="center" prop="result" label="状态" #default="{row}">
+      <el-table-column align="center" prop="result" :label="$t('submission.list.status')" #default="{row}">
         <judge-status-dict alert :value="row.result"></judge-status-dict>
       </el-table-column>
-      <el-table-column align="center" prop="problem" label="问题" #default="{row}">
+      <el-table-column align="center" prop="problem" :label="$t('submission.list.problem')" #default="{row}">
         <el-link type="primary" :underline="false" @click="handleProblemClick(row.problem)">
           {{ row.problem }}
         </el-link>
       </el-table-column>
-      <el-table-column align="center" prop="result" label="时间" #default="{row}">{{ row.statistic_info.time_cost | timeFormat }}</el-table-column>
-      <el-table-column align="center" prop="result" label="内存" #default="{row}">{{ row.statistic_info.memory_cost | memoryFormat }}</el-table-column>
-      <el-table-column align="center" prop="language" label="语言"></el-table-column>
-      <el-table-column align="center" prop="username" label="作者" #default="{row}">
+      <el-table-column align="center" prop="result" :label="$t('submission.list.time')" #default="{row}">{{ row.statistic_info.time_cost | timeFormat }}</el-table-column>
+      <el-table-column align="center" prop="result" :label="$t('submission.list.memory')" #default="{row}">{{ row.statistic_info.memory_cost | memoryFormat }}</el-table-column>
+      <el-table-column align="center" prop="language" :label="$t('submission.list.language')"></el-table-column>
+      <el-table-column align="center" prop="username" :label="$t('submission.list.author')" #default="{row}">
         <el-link type="primary" :underline="false" href="#">
           {{ row.username }}
         </el-link>
@@ -68,11 +68,10 @@ export default {
   data() {
     return {
       search: {
-        result: '',
-        username: '',
+        result: this.$route.query.result || '',
+        username: this.$route.query.username || '',
         problem_id: this.$route.query.problem_id
-      },
-      showTags: false
+      }
     }
   },
   props: {
@@ -82,8 +81,8 @@ export default {
     }
   },
   created() {
-    const { _featchData } = this
-    _featchData()
+    const { _fetchData } = this
+    _fetchData()
   },
   computed: {
     JudgeStatus() {
@@ -97,7 +96,7 @@ export default {
   },
   methods: {
     // 获取数据
-    async featchData() {
+    async fetchData() {
       const { search, pagging } = this
       const { data } = await this.$api.getContestSubmissionList({
         params: {

@@ -26,21 +26,21 @@
         <template v-else-if="contest.id && !realTimeStatusPermission && submissionExists">
           <el-alert type="success" show-icon :closable="false">
             <template #title>
-              <span>答案已经提交</span>
+              <span>{{ $t('problem.submit.submited') }}</span>
             </template>
           </el-alert>
         </template>
         <template v-else-if="problem.my_status === 0">
           <el-alert type="success" show-icon :closable="false">
             <template #title>
-              <span>已经解决了这个问题</span>
+              <span>{{ $t('problem.submit.sloved') }}</span>
             </template>
           </el-alert>
         </template>
         <template v-else-if="contestEnded">
           <el-alert type="warning" show-icon :closable="false">
             <template #title>
-              <span>比赛已经结束</span>
+              <span>{{ $t('problem.submit.contest_ended') }}</span>
             </template>
           </el-alert>
         </template>

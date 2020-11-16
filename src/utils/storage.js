@@ -9,7 +9,7 @@ export default {
    * @returns {String | null}
    */
   get(key, isJson = false) {
-    return localStorage.getItem(key, isJson)
+    return isJson ? JSON.parse(localStorage.getItem(key)) : localStorage.getItem(key)
   },
 
   /**
@@ -19,8 +19,8 @@ export default {
    * @param {Object} attributes
    * @returns {Boolean | undefined}
    */
-  set(key, val) {
-    return localStorage.setItem(key, val)
+  set(key, val, isJson = false) {
+    return localStorage.setItem(key, isJson ? JSON.stringify(val) : val)
   },
 
   /**

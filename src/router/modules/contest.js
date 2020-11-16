@@ -32,6 +32,13 @@ export default [
             hidden: true
           },
           {
+            path: 'announcement',
+            component: Components['contest-announcement'],
+            name: 'ContestAnnouncement',
+            meta: { title: 'contest' },
+            hidden: true
+          },
+          {
             path: 'problem',
             component: Components['contest-problem'],
             meta: { title: 'contest' },
@@ -74,6 +81,13 @@ export default [
                 hidden: true
               }
             ]
+          },
+          {
+            path: 'rank',
+            component: Components['contest-rank'],
+            name: 'ContestRank',
+            meta: { title: 'contest' },
+            hidden: true
           }
         ]
       }

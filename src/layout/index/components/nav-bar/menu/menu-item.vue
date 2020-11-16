@@ -1,16 +1,16 @@
 <template>
-  <fragment>
+  <fragment v-if="!item.hidden">
     <el-submenu v-if="hasManyShowingChild(item.children, item)" ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template #title>
         <i v-if="item.meta && item.meta.icon" :class="item.meta.icon"></i>
-        {{ item.meta.title }}
+        {{ $t(`navigation.${item.meta.title}`) }}
       </template>
       <menu-item v-for="child in item.children" :key="child.path" :is-nest="true" :item="child" :base-path="resolvePath(child.path)" class="nest-menu" />
     </el-submenu>
     <el-menu-item v-else-if="onlyOneChild.meta" route :index="resolvePath(onlyOneChild.path)">
       <template #title>
         <i v-if="onlyOneChild.meta.icon" :class="onlyOneChild.meta.icon"></i>
-        {{ onlyOneChild.meta.title }}
+        {{ $t(`navigation.${onlyOneChild.meta.title}`) }}
       </template>
     </el-menu-item>
   </fragment>

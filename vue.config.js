@@ -7,8 +7,13 @@ function resolve(dir) {
 module.exports = {
   devServer: {
     proxy: {
-      '/api': {
-        target: 'http://111.115.201.16:8088/',
+      // '/api': {
+      //   target: 'http://111.115.201.16:8088/',
+      //   changeOrigin: true,
+      //   secure: false
+      // }
+      '/': {
+        target: 'https://qduoj.com/',
         changeOrigin: true,
         secure: false
       }

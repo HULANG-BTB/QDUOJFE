@@ -58,8 +58,8 @@ export default {
     }
   },
   created() {
-    const { _featchData } = this
-    _featchData()
+    const { _fetchData } = this
+    _fetchData()
   },
   computed: {
     contestMode() {
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     // 获取数据
-    async featchData() {
+    async fetchData() {
       const { search, pagging } = this
       const { data } = await this.$api.getContestList({
         params: {

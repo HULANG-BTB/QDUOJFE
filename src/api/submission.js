@@ -30,6 +30,6 @@ export default [
     name: '设置题目分享状态',
     method: 'changeShareStatus',
     url: `${baseUrl}`,
-    type: 'post'
+    type: 'put'
   }
 ]

@@ -13,7 +13,13 @@ modulesFiles.keys().forEach((key) => {
 })
 
 asyncRoutes = asyncRoutes.sort((x, y) => {
-  if (x.sort < y.sort) {
+  if (x.sort === undefined && y.sort) {
+    return 1
+  } else if (x.sort && y.sort === undefined) {
+    return -1
+  } else if (!x.sort && y.sort === undefined) {
+    return 0
+  } else if (x.sort < y.sort) {
     return -1
   } else if (x.sort === y.sort) {
     return 0
